@@ -1,0 +1,37 @@
+<project>
+    <property file="build.properties" />
+
+	<path id="classpath">
+		<fileset dir="${fiji.dir}/lib" includes="fijicore.jar" />
+        <fileset dir="${fiji.dir}/lib" includes="rtsj.jar" />
+		<fileset dir="${fiji.dir}/lib" includes="fivmcommon.jar" />
+		<fileset dir="${fiji.dir}/lib" includes="fivmr.jar" />
+		<fileset dir="${fiji.dir}/lib" includes="fijirtdroid.jar" />
+        <!--<fileset
+        dir="${jpapbench.dir}/jpapabench-build/output/jar"
+        includes="jpapabench-core.jar" />
+		<fileset
+        dir="${jpapbench.dir}/jpapabench-build/output/jar"
+        includes="jpapabench-core-flightplans.jar" /> -->
+	</path>
+
+	<target name="clean">
+		<delete dir="builds" />
+	</target>
+
+	<target name="compile">
+		<mkdir dir="builds/classes" />
+		<javac srcdir="src" destdir="builds/classes">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="jar">
+		<mkdir dir="builds/jar" />
+		<jar destfile="builds/jar/rtdroid.jar" basedir="builds/classes">
+			<manifest>
+				<attribute name="Class-Path" value="$classpath" />
+			</manifest>
+		</jar>
+	</target>
+</project>

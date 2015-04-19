@@ -1,0 +1,5 @@
+1) Change build.properties, set your local fijivm root
+2) Change fivmv_compile, change to {your local fijivm root}/bin/fivmc
+
+Good Luck
+

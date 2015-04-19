@@ -1,0 +1,16 @@
+export FIVMR_LOG_LEVEL=1
+ant clean
+ant compile
+ant jar
+
+/home/abhijit/development/fivm/bin/fivmc                       \
+--more-opt --rt-verbosity-limit 10 --rt-assertions yes          \
+--rt-library RTSJ                                               \
+--gc CMR --g-scoped-memory --g-scope-checks no                  \
+--g-def-immortal-mem 10M                                        \
+--g-def-log true                                                \
+--rtdroid-manifest rtdroid-app-demo.xml -o rtdroid-app-demo.exe \
+./builds/jar/rtdroid.jar
+
+#--g-def-immortal-mem 10M                                        \ 
+#--target RTEMS-leon3-rtems4.10-sparc-32
